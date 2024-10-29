@@ -49,5 +49,7 @@ public:
 
     void runGame()
     {
+        void setPlayerIcons();
+        void switchPlayer();
     }
 };
