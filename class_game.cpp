@@ -4,7 +4,7 @@ using namespace std;
 
 class Game
 {
-    public:
+public:
     //initial player icons
     char playerIcons[3] = {'x', 'y', 'z'};
     void setPlayerIcons()
@@ -27,4 +27,8 @@ class Game
     //array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
+
+    void runGame()
+    {
+    }
 };

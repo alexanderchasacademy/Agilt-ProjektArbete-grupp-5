@@ -6,6 +6,9 @@ using namespace std;
 
 int main()
 {
-    Game connectFour;   
-    return 0; 
+    Game connectFour;
+
+    connectFour.runGame();
+
+    return 0;
 }
