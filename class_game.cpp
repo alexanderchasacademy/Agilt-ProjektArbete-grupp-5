@@ -17,6 +17,7 @@ public:
 
     void runGame()
     {
+        initializeBoard();
         printBoard();
         int chosenColumn;
         int playerIndex = 0;
@@ -25,6 +26,14 @@ public:
         placeSymbolInArray(chosenColumn, playerIndex);
     }
 
+
+    void initializeBoard() {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
+    for (int row = 0; row < 8; ++row) { 
+        for (int col = 0; col < 8; ++col) {
+            board[row][col] = ' ';
+        }
+    }
+}
     // method för att byta aktiva spelare
     void switchPlayer()
     {
