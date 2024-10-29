@@ -5,6 +5,7 @@ using namespace std;
 class Game
 {
 public:
+    char currentPlayer = NULL;
     // initial player icons
     char playerIcons[3] = {'x', 'y', 'z'};
     // array containing the gameboard
@@ -18,6 +19,25 @@ public:
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+    }
+
+    // method för att byta aktiva spelare
+    void switchPlayer()
+    {
+        if (currentPlayer == playerIcons[0])
+        {
+            currentPlayer == playerIcons[1];
+        }
+        else if (currentPlayer == playerIcons[1])
+        {
+            currentPlayer == playerIcons[2];
+        }
+        else if (currentPlayer == playerIcons[2])
+        {
+            currentPlayer == playerIcons[0];
+        }
+        else
+            ;
     }
 
     void setPlayerIcons()
