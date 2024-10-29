@@ -70,3 +70,27 @@ public:
         }
     }
 };
+
+//Funktion för att avsluta spelet.
+bool exitGame()
+{
+    char answer;
+    do
+    {
+        cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
+        cin >> answer;
+
+        if (answer == 'j' || answer == 'J') 
+        {
+            return true;
+        }
+        else if (answer == 'n' || answer == 'N') 
+        {
+            return false; 
+        }
+
+        
+        cout << "\nOgiltigt val. Försök igen.\n";
+
+    } while (true);
+}
