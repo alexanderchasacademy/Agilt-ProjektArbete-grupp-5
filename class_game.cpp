@@ -5,7 +5,7 @@ using namespace std;
 class Game
 {
 public:
-    char currentPlayer = NULL;
+    char currentPlayer = ' ';
     // initial player icons
     char playerIcons[3] = {'x', 'y', 'z'};
     // array containing the gameboard
