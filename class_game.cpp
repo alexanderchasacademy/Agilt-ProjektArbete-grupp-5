@@ -16,9 +16,11 @@ public:
     {
         int chosenColumn;
         int playerIndex = 0;
+        setPlayerIcons();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+        switchPlayer();
     }
 
     // method för att byta aktiva spelare
