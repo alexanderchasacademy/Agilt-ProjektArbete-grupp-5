@@ -10,15 +10,19 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-    
+
     void runGame()
     {
-        initializeBoard();
         int chosenColumn;
         int playerIndex = 0;
+        initializeBoard();
+        setPlayerIcons();
+        printBoard();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+        switchPlayer();
+        exitGame();
     }
 
     void initializeBoard() 
@@ -29,6 +33,7 @@ public:
         }
     }
 }
+
     // method för att byta aktiva spelare
     void switchPlayer()
     {
@@ -66,6 +71,22 @@ public:
         }
     }
 
+    void printBoard()
+    {
+        for (int rows = 0; rows < 8; ++rows)
+        {
+            for(int cols = 0; cols < 8; ++cols)
+            {
+                cout << "| " << gameBoard[rows][cols] << " ";
+            }
+            cout << "|" << endl;
+        }
+        for (int col = 0; col < 8; ++col) {
+            cout << "----";
+        }
+        cout << "-" << endl;
+    }
+
     void placeSymbolInArray(int chosenColumn, int playerIndex)
     {
         for (int row = 7; row >= 0; --row)
@@ -77,4 +98,29 @@ public:
             }
         }
     }
+
+    //Funktion för att avsluta spelet.
+    bool exitGame()
+    {
+        char answer;
+        do
+        {
+            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
+            cin >> answer;
+
+            if (answer == 'j' || answer == 'J') 
+            {
+                return true;
+            }
+            else if (answer == 'n' || answer == 'N') 
+            {
+                return false; 
+            }
+
+            
+            cout << "\nOgiltigt val. Försök igen.\n";
+
+        } while (true);
+    }
+
 };
