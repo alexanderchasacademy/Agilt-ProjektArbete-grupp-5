@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 class Game
@@ -11,21 +10,19 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-    
-    
 
     void runGame()
     {
-        printBoard();
         int chosenColumn;
         int playerIndex = 0;
+        setPlayerIcons();
+        printBoard();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+        switchPlayer();
+        exitGame();
     }
-
-
-    
 
     // method för att byta aktiva spelare
     void switchPlayer()
@@ -91,4 +88,29 @@ public:
             }
         }
     }
+
+    //Funktion för att avsluta spelet.
+    bool exitGame()
+    {
+        char answer;
+        do
+        {
+            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
+            cin >> answer;
+
+            if (answer == 'j' || answer == 'J') 
+            {
+                return true;
+            }
+            else if (answer == 'n' || answer == 'N') 
+            {
+                return false; 
+            }
+
+            
+            cout << "\nOgiltigt val. Försök igen.\n";
+
+        } while (true);
+    }
+
 };
