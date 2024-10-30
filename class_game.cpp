@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 class Game
@@ -11,15 +10,13 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-    vector<vector<char>>board;
-    Game() : currentPlayer(' '), board(8, vector<char>(8, ' ')){}
-    
+
     void runGame()
     {
-        initializeBoard();
         int chosenColumn;
         int playerIndex = 0;
         setPlayerIcons();
+        printBoard();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
@@ -27,16 +24,6 @@ public:
         exitGame();
     }
 
-    void initializeBoard() 
-    {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
-      for (int row = 0; row < 8; ++row) 
-      { 
-          for (int col = 0; col < 8; ++col) 
-          {
-              board[row][col] = ' ';
-          }
-      }
-    }
     // method för att byta aktiva spelare
     void switchPlayer()
     {
@@ -72,6 +59,22 @@ public:
                 cin >> playerIcons[i];
             }
         }
+    }
+
+    void printBoard()
+    {
+        for (int rows = 0; rows < 8; ++rows)
+        {
+            for(int cols = 0; cols < 8; ++cols)
+            {
+                cout << "| " << gameBoard[rows][cols] << " ";
+            }
+            cout << "|" << endl;
+        }
+        for (int col = 0; col < 8; ++col) {
+            cout << "----";
+        }
+        cout << "-" << endl;
     }
 
     void placeSymbolInArray(int chosenColumn, int playerIndex)
