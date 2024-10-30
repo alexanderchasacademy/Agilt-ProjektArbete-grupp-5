@@ -1,27 +1,42 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 class Game
 {
 public:
-    char currentPlayer = NULL;
+    char currentPlayer = ' ';
     // initial player icons
     char playerIcons[3] = {'x', 'y', 'z'};
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-
+    vector<vector<char>>board;
+    Game() : currentPlayer(' '), board(8, vector<char>(8, ' ')){}
+    
     void runGame()
     {
+        initializeBoard();
         int chosenColumn;
         int playerIndex = 0;
+        setPlayerIcons();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+        switchPlayer();
         exitGame();
     }
 
+    void initializeBoard() 
+    {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
+      for (int row = 0; row < 8; ++row) 
+      { 
+          for (int col = 0; col < 8; ++col) 
+          {
+              board[row][col] = ' ';
+          }
+      }
+    }
     // method för att byta aktiva spelare
     void switchPlayer()
     {
