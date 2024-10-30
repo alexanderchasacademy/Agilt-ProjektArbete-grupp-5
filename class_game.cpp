@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 class Game
@@ -11,8 +10,6 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-    vector<vector<char>>board;
-    Game() : currentPlayer(' '), board(8, vector<char>(8, ' ')){}
     
     void runGame()
     {
@@ -28,7 +25,7 @@ public:
 {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
     for (int row = 0; row < 8; ++row) { 
         for (int col = 0; col < 8; ++col) {
-            board[row][col] = ' ';
+            gameBoard[row][col] = ' ';
         }
     }
 }
