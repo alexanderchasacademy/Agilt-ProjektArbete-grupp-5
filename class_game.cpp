@@ -19,6 +19,7 @@ public:
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
+        exitGame();
     }
 
     // method för att byta aktiva spelare
@@ -69,28 +70,29 @@ public:
             }
         }
     }
-};
 
-//Funktion för att avsluta spelet.
-bool exitGame()
-{
-    char answer;
-    do
+    //Funktion för att avsluta spelet.
+    bool exitGame()
     {
-        cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
-        cin >> answer;
-
-        if (answer == 'j' || answer == 'J') 
+        char answer;
+        do
         {
-            return true;
-        }
-        else if (answer == 'n' || answer == 'N') 
-        {
-            return false; 
-        }
+            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
+            cin >> answer;
 
-        
-        cout << "\nOgiltigt val. Försök igen.\n";
+            if (answer == 'j' || answer == 'J') 
+            {
+                return true;
+            }
+            else if (answer == 'n' || answer == 'N') 
+            {
+                return false; 
+            }
 
-    } while (true);
-}
+            
+            cout << "\nOgiltigt val. Försök igen.\n";
+
+        } while (true);
+    }
+
+};
