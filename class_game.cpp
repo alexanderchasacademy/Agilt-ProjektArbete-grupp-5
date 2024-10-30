@@ -24,16 +24,19 @@ public:
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
         switchPlayer();
+        exitGame();
     }
 
     void initializeBoard() 
-{  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
-    for (int row = 0; row < 8; ++row) { 
-        for (int col = 0; col < 8; ++col) {
-            board[row][col] = ' ';
-        }
+    {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
+      for (int row = 0; row < 8; ++row) 
+      { 
+          for (int col = 0; col < 8; ++col) 
+          {
+              board[row][col] = ' ';
+          }
+      }
     }
-}
     // method för att byta aktiva spelare
     void switchPlayer()
     {
@@ -82,28 +85,29 @@ public:
             }
         }
     }
-};
 
-//Funktion för att avsluta spelet.
-bool exitGame()
-{
-    char answer;
-    do
+    //Funktion för att avsluta spelet.
+    bool exitGame()
     {
-        cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
-        cin >> answer;
-
-        if (answer == 'j' || answer == 'J') 
+        char answer;
+        do
         {
-            return true;
-        }
-        else if (answer == 'n' || answer == 'N') 
-        {
-            return false; 
-        }
+            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
+            cin >> answer;
 
-        
-        cout << "\nOgiltigt val. Försök igen.\n";
+            if (answer == 'j' || answer == 'J') 
+            {
+                return true;
+            }
+            else if (answer == 'n' || answer == 'N') 
+            {
+                return false; 
+            }
 
-    } while (true);
-}
+            
+            cout << "\nOgiltigt val. Försök igen.\n";
+
+        } while (true);
+    }
+
+};
