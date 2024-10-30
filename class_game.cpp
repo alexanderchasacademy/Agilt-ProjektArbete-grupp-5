@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -12,8 +11,8 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
-    vector<vector<char>>board;
-    Game() : currentPlayer(' '), board(8, vector<char>(8, ' ')){}
+    
+    
 
     void runGame()
     {
@@ -71,7 +70,7 @@ public:
         {
             for(int cols = 0; cols < 8; ++cols)
             {
-                cout << "| " << board[rows][cols] << " ";
+                cout << "| " << gameBoard[rows][cols] << " ";
             }
             cout << "|" << endl;
         }
