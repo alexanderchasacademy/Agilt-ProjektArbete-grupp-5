@@ -15,6 +15,7 @@ public:
     {
         int chosenColumn;
         int playerIndex = 0;
+        initializeBoard();
         setPlayerIcons();
         printBoard();
         cout << "Where do you want to place your symbol?" << endl;
@@ -23,6 +24,15 @@ public:
         switchPlayer();
         exitGame();
     }
+
+    void initializeBoard() 
+{  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
+    for (int row = 0; row < 8; ++row) { 
+        for (int col = 0; col < 8; ++col) {
+            gameBoard[row][col] = ' ';
+        }
+    }
+}
 
     // method för att byta aktiva spelare
     void switchPlayer()
