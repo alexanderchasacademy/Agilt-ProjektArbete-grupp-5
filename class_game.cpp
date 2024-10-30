@@ -43,14 +43,17 @@ public:
         if (currentPlayer == playerIcons[0])
         {
             currentPlayer == playerIcons[1];
+            cout << "Spelare 1s tur\n";
         }
         else if (currentPlayer == playerIcons[1])
         {
             currentPlayer == playerIcons[2];
+            cout << "Spelare 2s tur\n";
         }
         else if (currentPlayer == playerIcons[2])
         {
             currentPlayer == playerIcons[0];
+            cout << "Spelare 3s tur\n";
         }
         else
             ;
