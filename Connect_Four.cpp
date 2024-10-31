@@ -8,7 +8,7 @@ int main()
 {
     Game connectFour;
 
-    connectFour.runGame();
+    connectFour.gameMenu();
 
     return 0;
 }

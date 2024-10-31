@@ -14,6 +14,44 @@ public:
     int chosenColumn;
     int playerIndex = 0;
 
+    void gameMenu()
+    {
+        int mChoice;
+        cout << "Vällkommen till Fyra i Rad, välj ett av alternativen nedan (1-3)\n";
+        do
+        {
+            cout << "[1] Starta Spel\n"
+                    "[2] Visa Spel Regler\n"
+                    "[3] Avsluta Spel\n";
+            cout << "input: ";
+            cin >> mChoice;
+            switch (mChoice)
+            {
+            case 1:
+            
+                runGame();
+                break;
+            
+            case 2:
+            
+                gameRules();
+                continue;
+            
+            case 3:
+                exitGame();
+                break;
+            default:
+                cout << "ogiltig val, var snäll och välj ett giltig alternativ.\n";
+                continue;
+        }
+        } while (true);
+        
+        
+        
+        
+    }
+
+
     void runGame()
     {
         initializeBoard();
@@ -27,6 +65,7 @@ public:
         switchPlayer();
         exitGame();*/
     }
+
 
     void initializeBoard() 
 {  //ser till att alla celler är tomma i början av nytt spel när man vill starta om spelet
@@ -103,7 +142,35 @@ public:
             }
         }
     }
-
+    void gameRules()
+    {
+        int conLoop=true;
+        cout << "\nSpelet går ut på att tre spelare turas om att släppa ner en spelbricka i ett rutnät med åtta kolumner och åtta rader.\n"
+        "Målet är att få fyra brickor i rad - horisontellt, vertikalt eller diagonalt. Om någon får fyra i rad innan rutnätet är fullt, vinner den spelaren. Om rutnätet fylls utan att någon har fått fyra i rad, blir det oavgjort.\n";
+      do
+      {
+        cout << ".\n.\n.\n.\nTryck:\n[1] För att återvända till menyn \n[2] För att avsluta programmet.\n";
+        int rChoice;
+        cin >> rChoice;
+        switch (rChoice)
+        {
+        case 1:
+            conLoop=false;
+            break;
+        case 2:
+            exitGame();
+            break;
+        
+        default:
+            cout << "ogiltig val, var snäll och välj ett giltig alternativ.\n";
+            continue;
+        }
+        
+      } while (conLoop);
+      
+        
+        
+    }
     //Funktion för att avsluta spelet.
     bool exitGame()
     {
