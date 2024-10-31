@@ -10,6 +10,9 @@ public:
     // array containing the gameboard
     char gameBoard[8][8];
     const int winCon = 4;
+    bool winner = false, boardFull = false;
+    int chosenColumn;
+    int playerIndex = 0;
 
     void gameMenu()
     {
@@ -51,16 +54,16 @@ public:
 
     void runGame()
     {
-        int chosenColumn;
-        int playerIndex = 0;
         initializeBoard();
         setPlayerIcons();
-        printBoard();
+        currentPlayer = playerIcons[0];
+        loopGame();
+        /*printBoard();
         cout << "Where do you want to place your symbol?" << endl;
         cin >> chosenColumn;
         placeSymbolInArray(chosenColumn, playerIndex);
         switchPlayer();
-        exitGame();
+        exitGame();*/
     }
 
 
@@ -91,8 +94,7 @@ public:
             currentPlayer == playerIcons[0];
             cout << "Spelare 3s tur\n";
         }
-        else
-            ;
+        else;
     }
 
     void setPlayerIcons()
@@ -192,5 +194,17 @@ public:
 
         } while (true);
     }
-
+    //Method som kör spelet tills att spelplanen är full, det finns en vinnare eller spelaren vill avsluta. 
+    void loopGame()
+    {
+        while (winner == false || boardFull == false || exitGame() == false)
+        {
+            printBoard();
+            cout << "Where do you want to place your symbol?" << endl;
+            cin >> chosenColumn;
+            placeSymbolInArray(chosenColumn, playerIndex);
+            switchPlayer();
+            exitGame();
+        }
+    }
 };
