@@ -16,6 +16,7 @@ public:
     void gameMenu()
     {
         int mChoice;
+        bool mCheck=true;
         cout << "Vällkommen till Fyra i Rad, välj ett av alternativen nedan (1-3)\n";
         do
         {
@@ -24,6 +25,7 @@ public:
                     "[3] Avsluta Spel\n";
             cout << "input: ";
             cin >> mChoice;
+            
             switch (mChoice)
             {
             case 1:
@@ -33,17 +35,36 @@ public:
             
             case 2:
             
-                gameRules();
-                continue; //Gör så att loopen fortsätter efter man har kollat på reglerna( ifall man väljer att göra det)
+                if (gameRules()==false)
+                {
+                 mCheck=false;
+                 break;//Gör så att loopen fortsätter efter man har kollat på reglerna( ifall man väljer att göra det)
+                }
+                else
+                {
+                    mCheck = true;
+                    break;
+                }
+                
             
             case 3:
-                exitGame();
-                break;
+                
+                if (exitGame()==true)
+                {
+                 mCheck=false;
+                 break;
+                }
+                
+                
+                   
+                    
+                
+                
             default:
                 cout << "ogiltig val, var snäll och välj ett giltig alternativ.\n";
                 continue;
         }
-        } while (true);
+        } while (mCheck==true);
         
         
         
@@ -126,32 +147,39 @@ public:
             }
         }
     }
-    void gameRules()
+    bool gameRules()
     {
-        int conLoop=true; //skapar variabel som används senare för att avsluta do-While loopen
+        bool rCheck = true;
+        bool conLoop=true; //skapar variabel som används senare för att avsluta do-While loopen
         cout << "\nSpelet går ut på att tre spelare turas om att släppa ner en spelbricka i ett rutnät med åtta kolumner och åtta rader.\n"
         "Målet är att få fyra brickor i rad - horisontellt, vertikalt eller diagonalt. Om någon får fyra i rad innan rutnätet är fullt, vinner den spelaren. Om rutnätet fylls utan att någon har fått fyra i rad, blir det oavgjort.\n";
       do
       {
+        
         cout << ".\n.\n.\n.\nTryck:\n[1] För att återvända till menyn \n[2] För att avsluta programmet.\n";
         int rChoice;
         cin >> rChoice;
         switch (rChoice)
         {
         case 1:
-            conLoop=false; //gör conLoop till False så att inf-loopen avslutas och återvänder till menyn
+            conLoop=true; //gör conLoop till False så att inf-loopen avslutas och återvänder till menyn
+            rCheck = false;
             break;
         case 2:
-            exitGame();
-            break;
+            if (exitGame()==true)
+                {
+                 conLoop=false;
+                 rCheck=false;
+                 break;
+                }
         
         default:
             cout << "ogiltig val, var snäll och välj ett giltig alternativ.\n";
             continue; //Loopar om tills programmet får giltig svar
         }
         
-      } while (conLoop); // Loopen varar så länge conLoop == True
-      
+      } while (rCheck); // Loopen varar så länge conLoop == True
+      return conLoop;
         
         
     }
@@ -180,16 +208,18 @@ public:
     //Method som kör spelet tills att spelplanen är full, det finns en vinnare eller spelaren vill avsluta. 
     void loopGame()
     {
-        while (winner == false && boardFull == false)
+        bool eCheck = false;
+        while (winner == false && boardFull == false && eCheck==false)
         {
             printBoard();
             cout << "Where do you want to place your symbol?  (type 101 to exit game)" << endl;
             cin >> chosenColumn;
-            // if (chosenColumn == 101)
-            // {
-            //     exitGame();
-            // }
-            //else
+            if (chosenColumn == 101)
+            {
+                
+                eCheck=exitGame();
+            }
+            else
            { 
             placeSymbolInArray(chosenColumn);
             switchPlayer();
