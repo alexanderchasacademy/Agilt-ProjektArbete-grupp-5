@@ -4,7 +4,6 @@ using namespace std;
 class Game
 {
 public:
-    char currentPlayer = ' ';
     // initial player icons
     char playerIcons[3] = {'x', 'y', 'z'};
     // array containing the gameboard
@@ -56,7 +55,6 @@ public:
     {
         initializeBoard();
         setPlayerIcons();
-        currentPlayer = playerIcons[0];
         loopGame();
         /*printBoard();
         cout << "Where do you want to place your symbol?" << endl;
@@ -79,22 +77,8 @@ public:
     // method för att byta aktiva spelare
     void switchPlayer()
     {
-        if (currentPlayer == playerIcons[0])
-        {
-            currentPlayer == playerIcons[1];
-            cout << "Spelare 1s tur\n";
-        }
-        else if (currentPlayer == playerIcons[1])
-        {
-            currentPlayer == playerIcons[2];
-            cout << "Spelare 2s tur\n";
-        }
-        else if (currentPlayer == playerIcons[2])
-        {
-            currentPlayer == playerIcons[0];
-            cout << "Spelare 3s tur\n";
-        }
-        else;
+        playerIndex = (playerIndex + 1) % 3;
+        cout << "Spelare " << (playerIndex + 1) << "s tur\n";
     }
 
     void setPlayerIcons()
@@ -131,7 +115,7 @@ public:
         cout << "-" << endl;
     }
 
-    void placeSymbolInArray(int chosenColumn, int playerIndex)
+    void placeSymbolInArray(int chosenColumn)
     {
         for (int row = 7; row >= 0; --row)
         {
@@ -197,14 +181,22 @@ public:
     //Method som kör spelet tills att spelplanen är full, det finns en vinnare eller spelaren vill avsluta. 
     void loopGame()
     {
-        while (winner == false || boardFull == false || exitGame() == false)
+        while (winner == false && boardFull == false && exitGame() == false)
         {
             printBoard();
             cout << "Where do you want to place your symbol?" << endl;
             cin >> chosenColumn;
-            placeSymbolInArray(chosenColumn, playerIndex);
+            placeSymbolInArray(chosenColumn);
             switchPlayer();
             exitGame();
         }
+    }
+    bool checkdirections()
+    {
+
+    }
+    void checkForWinner()
+    {
+         
     }
 };
