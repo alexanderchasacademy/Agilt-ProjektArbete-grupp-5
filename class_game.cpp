@@ -181,7 +181,7 @@ public:
     //Method som kör spelet tills att spelplanen är full, det finns en vinnare eller spelaren vill avsluta. 
     void loopGame()
     {
-        while (winner == false && boardFull == false && exitGame() == false)
+        while (winner == false && boardFull == false)
         {
             printBoard();
             cout << "Where do you want to place your symbol?" << endl;
@@ -190,13 +190,5 @@ public:
             switchPlayer();
             exitGame();
         }
-    }
-    bool checkdirections()
-    {
-
-    }
-    void checkForWinner()
-    {
-         
     }
 };
