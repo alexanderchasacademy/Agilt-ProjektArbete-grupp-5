@@ -34,7 +34,7 @@ public:
             case 2:
             
                 gameRules();
-                continue;
+                continue; //Gör så att loopen fortsätter efter man har kollat på reglerna( ifall man väljer att göra det)
             
             case 3:
                 exitGame();
@@ -105,7 +105,7 @@ public:
         {
             for(int cols = 0; cols < 8; ++cols)
             {
-                cout << "| " << gameBoard[rows][cols] << " ";
+                cout << "| " << gameBoard[rows][cols] << " "; //Skriver ut boarden med tomma celler
             }
             cout << "|" << endl;
         }
@@ -128,7 +128,7 @@ public:
     }
     void gameRules()
     {
-        int conLoop=true;
+        int conLoop=true; //skapar variabel som används senare för att avsluta do-While loopen
         cout << "\nSpelet går ut på att tre spelare turas om att släppa ner en spelbricka i ett rutnät med åtta kolumner och åtta rader.\n"
         "Målet är att få fyra brickor i rad - horisontellt, vertikalt eller diagonalt. Om någon får fyra i rad innan rutnätet är fullt, vinner den spelaren. Om rutnätet fylls utan att någon har fått fyra i rad, blir det oavgjort.\n";
       do
@@ -139,7 +139,7 @@ public:
         switch (rChoice)
         {
         case 1:
-            conLoop=false;
+            conLoop=false; //gör conLoop till False så att inf-loopen avslutas och återvänder till menyn
             break;
         case 2:
             exitGame();
@@ -147,10 +147,10 @@ public:
         
         default:
             cout << "ogiltig val, var snäll och välj ett giltig alternativ.\n";
-            continue;
+            continue; //Loopar om tills programmet får giltig svar
         }
         
-      } while (conLoop);
+      } while (conLoop); // Loopen varar så länge conLoop == True
       
         
         
@@ -161,8 +161,7 @@ public:
         char answer;
         do
         {
-            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";
-            cin >> answer;
+            cout << "Vill du avsluta spelet? \nJa(j) Nej(n): ";            cin >> answer;
 
             if (answer == 'j' || answer == 'J') 
             {
@@ -184,11 +183,17 @@ public:
         while (winner == false && boardFull == false)
         {
             printBoard();
-            cout << "Where do you want to place your symbol?" << endl;
+            cout << "Where do you want to place your symbol?  (type 101 to exit game)" << endl;
             cin >> chosenColumn;
+            // if (chosenColumn == 101)
+            // {
+            //     exitGame();
+            // }
+            //else
+           { 
             placeSymbolInArray(chosenColumn);
             switchPlayer();
-            exitGame();
+            }
         }
     }
 };
