@@ -186,9 +186,15 @@ public:
             printBoard();
             cout << "Where do you want to place your symbol?" << endl;
             cin >> chosenColumn;
+           /* if (!isValidMove(chosenColumn)) {
+            cout << "Invalid move. Please try again." << endl;
+            continue;
+        }
+        */
             placeSymbolInArray(chosenColumn);
             switchPlayer();
             exitGame();
         }
     }
+
 };
